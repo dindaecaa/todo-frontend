@@ -6,75 +6,80 @@ type TaskDetailCardProps = {
   todo: Todo;
 };
 
-export default function TaskDetailCard({ todo }: TaskDetailCardProps) {
+export default function TaskDetailCard({
+  todo,
+}: TaskDetailCardProps) {
   return (
-    <main className="min-h-screen p-8 bg-gray-100">
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-        <header className="mb-6 border-b pb-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-800">
+    <main className="min-h-screen bg-white p-8">
+      <div className="max-w-3xl mx-auto bg-white border border-gray-300 rounded-xl shadow-lg p-8">
+
+        {/* Header */}
+        <header className="flex items-center justify-between border-b border-gray-300 pb-5 mb-8">
+          <h1 className="text-2xl font-bold text-gray-900">
             Detail Tugas
           </h1>
 
           <Link
             href="/"
-            className="text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1.5 rounded-md transition"
+            className="text-sm bg-gray-50 hover:bg-gray-100 text-gray-600 px-4 py-2 rounded-lg border border-gray-200 transition"
           >
             ← Kembali ke Daftar
           </Link>
         </header>
 
-        <div className="space-y-4">
+        {/* Detail Tugas */}
+        <div className="space-y-7">
+
+          {/* ID Tugas */}
           <div>
-            <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-              ID Tugas
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+              ID TUGAS
             </label>
-            <p className="text-gray-700 font-medium">#{todo.id}</p>
+
+            <span className="inline-block bg-purple-50 text-purple-400 px-3 py-1 rounded-full text-sm font-semibold">
+              #{todo.id}
+            </span>
           </div>
 
+          {/* Judul Tugas */}
           <div>
-            <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-              Judul Tugas
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+              JUDUL TUGAS
             </label>
+
             <h2 className="text-xl font-semibold text-gray-900">
               {todo.title}
             </h2>
           </div>
 
+          {/* Status */}
           <div>
-            <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-              Deskripsi
-            </label>
-            <p className="text-gray-600 bg-gray-50 p-4 rounded-md border border-gray-200 mt-1">
-              {todo.description}
-            </p>
-          </div>
-
-          <div>
-            <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-              Status
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+              STATUS
             </label>
 
-            <div className="mt-1">
-              <span
-                className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
-                  todo.completed
-                    ? 'bg-green-100 text-green-700 border border-green-200'
-                    : 'bg-yellow-100 text-yellow-700 border border-yellow-200'
-                }`}
-              >
-                {todo.completed ? '✓ Selesai' : '⌛ Belum Selesai'}
+            {todo.completed ? (
+              <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">
+                ✓ Selesai
               </span>
-            </div>
+            ) : (
+              <span className="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">
+                ⌛ Belum Selesai
+              </span>
+            )}
           </div>
 
+          {/* Tanggal Dibuat */}
           <div>
-            <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-              Tanggal Dibuat
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+              TANGGAL DIBUAT
             </label>
-            <p className="text-gray-600 text-sm mt-1">
+
+            <p className="text-gray-500 text-sm">
               {todo.createdAt}
             </p>
           </div>
+
         </div>
       </div>
     </main>
